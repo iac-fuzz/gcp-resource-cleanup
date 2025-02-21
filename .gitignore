@@ -5,3 +5,4 @@
 .DS_Store
 /deletion-script.sh
 /keys/*
+__pycache__/
