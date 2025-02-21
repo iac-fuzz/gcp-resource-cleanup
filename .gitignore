@@ -1,0 +1,7 @@
+*credentials.json
+/*sample*
+/*temp*
+/.idea/**
+.DS_Store
+/deletion-script.sh
+/keys/*
