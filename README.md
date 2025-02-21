@@ -3,9 +3,10 @@
 ## Usage
 
 1. Generate a GCP credentials json file Ex: gcp-keys.json
-# this will give you the iam-account name which is the email 
 
 ```bash
+# this will give you the iam-account name which is the email 
+
 gcloud iam service-accounts list
 ```
 
