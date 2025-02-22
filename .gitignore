@@ -6,3 +6,6 @@
 /deletion-script.sh
 /keys/*
 __pycache__/
+.terraform*
+terraform.tfstate
+*.backup

@@ -14,10 +14,12 @@ gcloud iam service-accounts list
 gcloud iam service-accounts keys create gcp-keys.json --iam-account=<iam-account-from-above>
 ```
 
-2. It scan your resources and generate cleanup bash script
+2. Scan your resources and generate cleanup bash script
 
 ```bash
-./base-gen-deletion-script.sh -p <GCP-project-name> -k gcp-keys.json > cleanup-script.sh && chmod a+x cleanup-script.sh
+python base_gen_deletion_script.py -k gcp-keys.json > cleanup-script.sh
+
+chmod a+x cleanup-script.sh
 ```
 
 3. Double check the cleanup script
