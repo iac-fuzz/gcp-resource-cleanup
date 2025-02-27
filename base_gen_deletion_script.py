@@ -224,15 +224,7 @@ def create_bucket_deletion_code(filter_expression: str, async_mode: bool):
         print(' '.join(command))
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Generate GCP resource deletion script.")
-    # parser.add_argument("-p", "--project", required=True, help="GCP project ID")
-    parser.add_argument("-k", "--key-file", default="keys/gcp-keys.json", help="Service account key file")
-    parser.add_argument("-f", "--filter", default="", help="Filter expression")
-    parser.add_argument("-b", "--background", action="store_true", help="Run deletion commands asynchronously")
-
-    args = parser.parse_args()
-
+def main(key_file: str, filter: str, background: bool):
     with open(args.key_file, "r") as f:
         key_data = json.load(f)
         
@@ -259,4 +251,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Generate GCP resource deletion script.")
+    parser.add_argument("-k", "--key-file", default="keys/gcp-keys.json", help="Service account key file")
+    parser.add_argument("-f", "--filter", default="", help="Filter expression")
+    parser.add_argument("-b", "--background", action="store_true", help="Run deletion commands asynchronously")
+    args = parser.parse_args()
+
+    main(args.key_file, args.filter, args.background)
