@@ -5,6 +5,7 @@
 .DS_Store
 /deletion-script.sh
 /keys/*
+/key/*
 __pycache__/
 .terraform*
 terraform.tfstate
