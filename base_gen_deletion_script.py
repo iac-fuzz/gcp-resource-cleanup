@@ -246,7 +246,6 @@ def main(key_file: str, filter: str, background: bool):
     create_deletion_code("pubsub", ["subscriptions", "topics", "snapshots"], True, project_id, args.filter, args.background)
     create_deletion_code("functions", [""], False, project_id, args.filter, args.background)
     create_deletion_code("alloydb", ["backups", "clusters", "instances", "operations"], True, project_id, args.filter, args.background)
-
     create_bucket_deletion_code(args.filter, args.background)
 
 
