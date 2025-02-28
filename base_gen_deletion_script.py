@@ -225,11 +225,11 @@ def create_bucket_deletion_code(filter_expression: str, async_mode: bool):
 
 
 def main(key_file: str, filter: str, background: bool):
-    with open(args.key_file, "r") as f:
+    with open(key_file, "r") as f:
         key_data = json.load(f)
         
     project_id = key_data["project_id"]
-    login(args.key_file, project_id)
+    login(key_file, project_id)
 
     compute_resource_types = [
         "instances", "addresses", "target-http-proxies", "target-https-proxies", "target-grpc-proxies",
@@ -239,14 +239,14 @@ def main(key_file: str, filter: str, background: bool):
     ]
 
     print("set -x")  # Easier tracking when running the script
-    create_deletion_code("container", ["clusters"], True, project_id, args.filter, args.background)
-    create_deletion_code("compute", compute_resource_types, True, project_id, args.filter, args.background)
-    create_deletion_code("sql", ["instances"], False, project_id, args.filter, args.background)
-    create_deletion_code("app", ["services", "firewall-rules"], True, project_id, args.filter, args.background)
-    create_deletion_code("pubsub", ["subscriptions", "topics", "snapshots"], True, project_id, args.filter, args.background)
-    create_deletion_code("functions", [""], False, project_id, args.filter, args.background)
-    create_deletion_code("alloydb", ["backups", "clusters", "instances", "operations"], True, project_id, args.filter, args.background)
-    create_bucket_deletion_code(args.filter, args.background)
+    create_deletion_code("container", ["clusters"], True, project_id, filter, background)
+    create_deletion_code("compute", compute_resource_types, True, project_id, filter, background)
+    create_deletion_code("sql", ["instances"], False, project_id, filter, background)
+    create_deletion_code("app", ["services", "firewall-rules"], True, project_id, filter, background)
+    create_deletion_code("pubsub", ["subscriptions", "topics", "snapshots"], True, project_id, filter, background)
+    create_deletion_code("functions", [""], False, project_id, filter, background)
+    create_deletion_code("alloydb", ["backups", "clusters", "instances", "operations"], True, project_id, filter, background)
+    create_bucket_deletion_code(filter, background)
 
 
 if __name__ == "__main__":
